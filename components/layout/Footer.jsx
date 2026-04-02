@@ -4,14 +4,11 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300 mt-16">
       <div className="max-w-6xl mx-auto px-4 py-10 grid gap-8 md:grid-cols-3">
-
         <div>
           <h2 className="text-xl font-bold text-white mb-3">
             Free Online Tools
           </h2>
-          <p>
-            Fast, secure and free tools for developers and everyone.
-          </p>
+          <p>Fast, secure and free tools for developers and everyone.</p>
         </div>
 
         <div>
@@ -32,11 +29,11 @@ export default function Footer() {
             <Link href="/tools/password-generator">Password Generator</Link>
           </div>
         </div>
-
       </div>
 
       <div className="text-center py-4 border-t border-gray-700 text-sm">
-        © {new Date().getFullYear()} Free Online Tools. All rights reserved.
+        © {new Date().getFullYear()} Free Online Tools. All rights reserved
+        tooliohub.
       </div>
     </footer>
   );
