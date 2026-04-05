@@ -5,8 +5,19 @@ import AdBottom from "@/components/ads/AdBottom";
 import "./globals.css";
 
 export const metadata = {
-  title: "Free Online Tools",
-  description: "Best free tools website",
+  title: {
+    default: "ToolioHub - Free Finance Tools & Blogs",
+    template: "%s | ToolioHub",
+  },
+  description:
+    "Free finance tools, calculators and high CPC USA blogs for money growth and investment.",
+  keywords: [
+    "finance blog",
+    "investment calculator",
+    "salary calculator usa",
+    "retirement planner",
+    "high cpc blog",
+  ],
 };
 
 export default function RootLayout({ children }) {

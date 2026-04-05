@@ -17,8 +17,12 @@ export default function Navbar() {
       name: "Tools",
       dropdown: true,
       items: [
-        { name: "Image Compressor", path: "/tools/image-compressor" },
-        { name: "JSON Formatter", path: "/tools/json-formatter" },
+        { name: "Loan calculator", path: "/tools/loan-calculator" },
+        { name: "salary calculator", path: "/tools/salary-calculator" },
+        { name: "mortgage calculator", path: "/tools/mortgage-calculator" },
+        { name: "credit card", path: "/tools/credit-card" },
+        { name: "investment calculator", path: "/tools/investment-calculator" },
+        { name: "retierment calculator", path: "/tools/retierment-calculator" },
       ],
     },
     { name: "About", path: "/about" },
@@ -26,14 +30,11 @@ export default function Navbar() {
   ];
 
   const isActive = (path) =>
-    pathname === path
-      ? "text-blue-600 font-semibold"
-      : "text-gray-700";
+    pathname === path ? "text-blue-600 font-semibold" : "text-gray-700";
 
   return (
     <nav className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b">
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-        
         {/* Logo */}
         <Link href="/" className="text-xl font-bold text-blue-600">
           ToolioHub
@@ -76,7 +77,7 @@ export default function Navbar() {
               >
                 {item.name}
               </Link>
-            )
+            ),
           )}
 
           {/* Admin Button */}
@@ -89,10 +90,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Button */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden text-2xl"
-        >
+        <button onClick={() => setOpen(!open)} className="md:hidden text-2xl">
           ☰
         </button>
       </div>
@@ -126,7 +124,7 @@ export default function Navbar() {
               >
                 {item.name}
               </Link>
-            )
+            ),
           )}
 
           {/* Admin Mobile */}

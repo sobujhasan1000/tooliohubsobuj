@@ -3,20 +3,19 @@ import { useState } from "react";
 import Link from "next/link";
 
 const tools = [
-  { name: "Image Compressor", link: "/tools/image-compressor" },
-  { name: "JSON Formatter", link: "/tools/json-formatter" },
-  { name: "Password Generator", link: "/tools/password-generator" },
-  { name: "Age Calculator", link: "/tools/age-calculator" },
-  { name: "Word Counter", link: "/tools/word-counter" },
-  { name: "Base64 Encoder", link: "/tools/base64-tool" },
-  { name: "UUID Generator", link: "/tools/uuid-generator" },
+  { name: "Loan calculator", link: "/tools/loan-calculator" },
+  { name: "salary calculator", link: "/tools/salary-calculator" },
+  { name: "mortgage calculator", link: "/tools/mortgage-calculator" },
+  { name: "credit card", link: "/tools/credit-card" },
+  { name: "investment calculator", link: "/tools/investment-calculator" },
+  { name: "retierment calculator", link: "/tools/retierment-calculator" },
 ];
 
 export default function SearchTools() {
   const [search, setSearch] = useState("");
 
   const filtered = tools.filter((tool) =>
-    tool.name.toLowerCase().includes(search.toLowerCase())
+    tool.name.toLowerCase().includes(search.toLowerCase()),
   );
 
   return (
@@ -32,7 +31,7 @@ export default function SearchTools() {
       <div className="mt-4 space-y-2">
         {filtered.map((tool, i) => (
           <Link key={i} href={tool.link}>
-            <div className="p-3 border rounded-xl hover:bg-blue-50 cursor-pointer">
+            <div className="p-3 border rounded-xl hover:bg-blue-50 cursor-pointer m-2">
               {tool.name}
             </div>
           </Link>

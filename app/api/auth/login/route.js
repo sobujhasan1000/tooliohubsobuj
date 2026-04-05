@@ -5,10 +5,10 @@ export async function POST(req) {
   const { email, password } = await req.json();
 
   // 🔐 simple admin check
-  if (email !== "admin@gmail.com" || password !== "123456") {
+  if (email !== "mehera2023@gmail.com" || password !== "220823") {
     return NextResponse.json(
       { message: "Invalid credentials" },
-      { status: 401 }
+      { status: 401 },
     );
   }
 
