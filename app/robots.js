@@ -4,6 +4,6 @@ export default function robots() {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://tooliohub.vercel.app/sitemap.xml",
+    sitemap: "https://www.tooliofinance.com/sitemap.xml",
   };
 }

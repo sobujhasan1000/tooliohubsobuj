@@ -1,53 +1,64 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import AdTop from "@/components/ads/AdTop";
-import AdBottom from "@/components/ads/AdBottom";
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata = {
+  metadataBase: new URL("https://www.tooliofinance.com"),
+
   title: {
-    default: "ToolioHub - Free Finance Tools & Blogs",
-    template: "%s | ToolioHub",
+    default: "ToolioFinance - Free Finance Tools & Blogs",
+    template: "%s | ToolioFinance",
   },
+
   description:
     "Free finance tools, calculators and high CPC USA blogs for money growth and investment.",
+
   keywords: [
-    "finance blog",
+    "finance calculator USA",
     "investment calculator",
-    "salary calculator usa",
+    "salary calculator USA",
     "retirement planner",
-    "high cpc blog",
+    "loan calculator USA",
+    "high CPC finance blog",
   ],
+
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Google AdSense Script */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
-          crossOrigin="anonymous"
-        ></script>
+        {/* ✅ Google Search Console Verification */}
+        <meta
+          name="google-site-verification"
+          content="ferAaVwZZKOS0wwqSn5nANeOQ9PKveokM6qxEy2rL7U"
+        />
       </head>
 
       <body>
         <Navbar />
 
-        {/* 🔝 TOP AD */}
-        {/* <div className="max-w-6xl mx-auto px-4">
-          <div className="mt-4">
-            <AdTop />
-          </div>
-        </div> */}
-
         <main className="min-h-screen">{children}</main>
 
-        {/* 🔽 FOOTER AD */}
-        {/* <div className="max-w-6xl mx-auto px-4">
-          <AdBottom />
-        </div> */}
+        {/* ✅ Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-G0XSRPJ89T"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-G0XSRPJ89T');
+          `}
+        </Script>
 
         <Footer />
       </body>

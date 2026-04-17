@@ -1,28 +1,3 @@
-// export default function sitemap() {
-//   const baseUrl = "https://tooliohub.vercel.app";
-
-//   const tools = [
-//     "/tools/salary-calculator",
-//     "/tools/investment-calculator",
-//     "/tools/retirement-calculator",
-//     "/tools/loan-calculator",
-//     "/tools/mortgage-calculator",
-//     "/tools/credit-card",
-//   ];
-
-//   const blogPosts = [
-//     "/blog/how-to-save-money-usa",
-//     "/blog/best-investment-tips-2026",
-//     "/blog/retirement-plan-guide",
-//   ];
-
-//   return [
-//     { url: baseUrl, lastModified: new Date() },
-//     ...tools.map((t) => ({ url: baseUrl + t, lastModified: new Date() })),
-//     ...blogPosts.map((b) => ({ url: baseUrl + b, lastModified: new Date() })),
-//   ];
-// }
-
 import Blog from "@/models/Blog";
 import { connectDB } from "@/lib/mongodb";
 
@@ -31,16 +6,48 @@ export default async function sitemap() {
 
   const blogs = await Blog.find();
 
-  const blogUrls = blogs.map((post) => ({
-    url: `https://tooliohub.vercel.app/blog/${post.slug}`,
-    lastModified: new Date(),
-  }));
+  const baseUrl = "https://www.tooliofinance.com";
+
+  // Static Pages
+  const staticPages = [
+    { path: "", priority: 1.0, changefreq: "daily" },
+    { path: "/about", priority: 0.5, changefreq: "monthly" },
+    { path: "/contact", priority: 0.5, changefreq: "monthly" },
+  ];
+
+  // Tools (HIGH SEO PAGES)
+  const tools = [
+    "/tools/salary-calculator",
+    "/tools/investment-calculator",
+    "/tools/retirement-calculator", // fixed typo
+    "/tools/loan-calculator",
+    "/tools/mortgage-calculator",
+    "/tools/credit-card",
+  ];
 
   return [
-    {
-      url: "https://tooliohub.vercel.app",
+    // Static pages
+    ...staticPages.map((page) => ({
+      url: `${baseUrl}${page.path}`,
       lastModified: new Date(),
-    },
-    ...blogUrls,
+      priority: page.priority,
+      changeFrequency: page.changefreq,
+    })),
+
+    // Tools (very important pages)
+    ...tools.map((tool) => ({
+      url: `${baseUrl}${tool}`,
+      lastModified: new Date(),
+      priority: 0.9,
+      changeFrequency: "weekly",
+    })),
+
+    // Blog posts
+    ...blogs.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.updatedAt || Date.now()),
+      priority: 0.7,
+      changeFrequency: "monthly",
+    })),
   ];
 }

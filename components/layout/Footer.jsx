@@ -33,7 +33,7 @@ export default function Footer() {
 
       <div className="text-center py-4 border-t border-gray-700 text-sm">
         © {new Date().getFullYear()} Free Online Tools. All rights reserved
-        tooliohub.
+        ToolioFinance.
       </div>
     </footer>
   );
