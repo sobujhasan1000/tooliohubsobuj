@@ -2,36 +2,93 @@ import Link from "next/link";
 import SearchTools from "@/components/SearchTools";
 import BlogPreview from "@/components/BlogPreview";
 
+// ✅ Lucide Icons
+import {
+  DollarSign,
+  Landmark,
+  TrendingUp,
+  HouseWifi,
+  PiggyBank,
+  CreditCard,
+} from "lucide-react";
+
+// ✅ SEO META
+export const metadata = {
+  title: "Best USA Finance Calculators (2026) – Salary, Loan, Investment Tools",
+  description:
+    "Use free USA finance calculators: salary after tax, loan EMI, mortgage, investment growth & retirement planning tools. Fast, accurate & 100% free.",
+  keywords: [
+    "salary calculator USA after tax",
+    "loan EMI calculator USA",
+    "mortgage calculator USA",
+    "investment calculator compound interest",
+    "retirement calculator USA",
+    "credit card payoff calculator free",
+  ],
+  metadataBase: new URL("https://www.tooliofinance.com"),
+
+  openGraph: {
+    title: "USA Finance Calculators – Free & Accurate Tools",
+    description:
+      "Calculate salary, loan, mortgage, and investments easily with our free tools.",
+    url: "https://www.tooliofinance.com",
+    siteName: "ToolioFinance",
+    type: "website",
+  },
+
+  alternates: {
+    canonical: "https://www.tooliofinance.com",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+// ✅ TOOLS DATA
 const tools = [
   {
-    title: "Salary After Tax (USA)",
+    title: "Salary Calculator USA",
     href: "/tools/salary-calculator",
-    desc: "Calculate net income after US tax",
+    desc: "Calculate salary after tax instantly",
+    tag: "Popular",
+    icon: DollarSign,
+  },
+  {
+    title: "Loan Calculator",
+    href: "/tools/loan-calculator",
+    desc: "Estimate monthly loan payments",
+    tag: "High CPC",
+    icon: Landmark,
+  },
+  {
+    title: "Mortgage Calculator",
+    href: "/tools/mortgage-calculator",
+    desc: "Home loan monthly estimate",
+    tag: "Top",
+    icon: HouseWifi,
   },
   {
     title: "Investment Calculator",
     href: "/tools/investment-calculator",
     desc: "Grow money with compound interest",
+    tag: "Best",
+    icon: TrendingUp,
   },
   {
     title: "Retirement Planner",
     href: "/tools/retirement-calculator",
-    desc: "Plan your financial future",
-  },
-  {
-    title: "Loan Calculator",
-    href: "/tools/loan-calculator",
-    desc: "Monthly loan payment estimator",
-  },
-  {
-    title: "Mortgage Calculator",
-    href: "/tools/mortgage-calculator",
-    desc: "USA home loan calculator",
+    desc: "Plan your future savings",
+    tag: "Future",
+    icon: PiggyBank,
   },
   {
     title: "Credit Card Payoff",
     href: "/tools/credit-card",
-    desc: "Pay off debt faster plan",
+    desc: "Pay off debt faster",
+    tag: "Hot",
+    icon: CreditCard,
   },
 ];
 
@@ -39,215 +96,265 @@ export default function Home() {
   return (
     <div className="bg-white">
       {/* 🔥 HERO */}
-      <section className="relative py-16 sm:py-20 md:py-28 px-4 bg-linear-to-br from-blue-500 via-indigo-500 to-blue-400 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-20 blur-3xl bg-linear-to-r from-cyan-400 via-blue-500 to-indigo-500"></div>
+      <section className="py-20 px-4 bg-linear-to-br from-green-500 via-green-400 to-cyan-300 text-black text-center">
+        <h1 className="text-3xl md:text-5xl font-extrabold">
+          Smart USA Finance Calculators
+        </h1>
+        <p className="mt-4 text-lg text-white/90">
+          Salary, loan, investment & retirement tools — all free.
+        </p>
 
-        <div className="relative z-10 max-w-6xl mx-auto text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight">
-            Smart USA Finance Calculators
-            <span className="block text-cyan-300 mt-2">
-              Salary, Tax & Investment Tools
-            </span>
-          </h1>
-
-          <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-white/90">
-            Free tools to calculate salary, tax, loans and retirement in the
-            USA.
-          </p>
-
-          <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              href="/tools/salary-calculator"
-              className="px-6 py-3 bg-white text-blue-800 rounded-xl font-semibold shadow hover:scale-105 transition"
-            >
-              Start Calculator 🚀
-            </Link>
-
-            <Link
-              href="/blog"
-              className="px-6 py-3 bg-white/10 backdrop-blur border border-white/20 rounded-xl font-semibold hover:bg-white/20 transition"
-            >
-              Read Blog →
-            </Link>
-          </div>
-
-          {/* TRUST */}
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto text-sm">
-            <div className="bg-white/10 rounded-lg py-3">✔ 10K+ Users</div>
-            <div className="bg-white/10 rounded-lg py-3">
-              ✔ Accurate USA Data
-            </div>
-            <div className="bg-white/10 rounded-lg py-3">✔ Updated 2026</div>
-          </div>
-        </div>
-      </section>
-
-      {/* 🔥 FEATURED TOOL */}
-      <section className="max-w-5xl mx-auto px-4 mt-10">
-        <div className="bg-linear-to-r from-blue-500 to-indigo-400 text-white p-6 rounded-2xl shadow text-center">
-          <h2 className="text-xl sm:text-2xl font-bold">
-            🔥 Most Popular: Salary Calculator USA
-          </h2>
-          <p className="mt-2 text-white/90 text-sm sm:text-base">
-            Calculate your take-home salary after tax instantly.
-          </p>
-
+        <div className="mt-6 flex justify-center gap-3">
           <Link
             href="/tools/salary-calculator"
-            className="inline-block mt-4 px-6 py-3 bg-white text-blue-700 rounded-lg font-semibold"
+            className="px-6 py-3 bg-white text-blue-700 rounded-xl font-semibold"
           >
-            Use Now →
+            Start Calculator 🚀
+          </Link>
+
+          <Link
+            href="/blog"
+            className="px-6 py-3 bg-white/10 border border-white/20 rounded-xl"
+          >
+            Read Blog →
           </Link>
         </div>
       </section>
 
-      {/* 🔥 TOOLS */}
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-xl sm:text-2xl font-bold text-center mb-8">
-          USA Finance Calculators
+      {/* 🔥 SEO CONTENT */}
+      <section className="max-w-4xl mx-auto px-4 py-10 text-center">
+        <h2 className="text-xl font-bold mb-3">
+          Free USA Financial Calculators
+        </h2>
+        <p className="text-gray-600 text-sm">
+          ToolioFinance offers free and accurate financial calculators for
+          salary, loans, mortgages, investments, and retirement planning in the
+          USA. Plan smarter and grow your money easily.
+        </p>
+      </section>
+
+      {/* 🔥 TOOLS (NERDWALLET STYLE) */}
+      <section className="max-w-6xl mx-auto px-6 py-16 bg-green-100 rounded-4xl">
+        <h2 className="text-2xl font-bold text-center mb-10">
+          Financial Tools
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-          {tools.map((tool, i) => (
-            <Link key={i} href={tool.href}>
-              <div className="group relative p-5 rounded-2xl border bg-white shadow-sm hover:shadow-xl transition duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden">
-                {/* 🔥 TOP ICON + TITLE */}
-                <div className="flex items-start gap-3">
-                  {/* ICON BOX */}
-                  <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-100 text-blue-600 text-lg group-hover:bg-blue-600 group-hover:text-white transition">
-                    💰
-                  </div>
+        <div className="grid md:grid-cols-3 gap-6 ">
+          {tools.map((tool, i) => {
+            const Icon = tool.icon;
 
-                  <div>
-                    <h3 className="text-base sm:text-lg font-semibold group-hover:text-blue-700 transition">
-                      {tool.title}
-                    </h3>
-
-                    <p className="text-sm text-gray-500 mt-1 line-clamp-2">
-                      {tool.desc}
-                    </p>
-                  </div>
+            return (
+              <Link
+                href={tool.href}
+                key={i}
+                className="group border rounded-2xl p-6 bg-cyan-100 shadow-sm hover:shadow-xl transition hover:-translate-y-1 text-center"
+              >
+                {/* ICON */}
+                <div className="w-16 h-16 mx-auto flex items-center justify-center rounded-2xl bg-linear-to-br from-emerald-300 to-indigo-100 group-hover:from-blue-600 group-hover:to-indigo-600 transition">
+                  <Icon
+                    size={30}
+                    className="text-green-500 group-hover:text-white"
+                  />
                 </div>
 
-                {/* 🔥 BOTTOM */}
-                <div className="mt-5 flex justify-between items-center">
+                {/* TITLE + TAG */}
+                <div className="mt-4 flex items-center justify-center gap-2 flex-wrap">
+                  <h3 className="text-lg font-semibold group-hover:text-blue-700">
+                    {tool.title}
+                  </h3>
+
                   <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
-                    Popular
-                  </span>
-
-                  <span className="text-sm font-medium text-blue-600 flex items-center gap-1 group-hover:gap-2 transition-all">
-                    Use Tool →
+                    {tool.tag}
                   </span>
                 </div>
 
-                {/* 🔥 HOVER GLOW EFFECT */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-linear-to-r from-blue-500/5 to-indigo-500/5"></div>
-              </div>
-            </Link>
-          ))}
+                {/* DESC */}
+                <p className="text-sm text-gray-500 mt-2">{tool.desc}</p>
+
+                {/* FEATURES */}
+                <div className="mt-4 flex justify-center gap-2 text-xs">
+                  <span className="bg-gray-100 px-2 py-1 rounded">Fast</span>
+                  <span className="bg-gray-100 px-2 py-1 rounded">
+                    Accurate
+                  </span>
+                  <span className="bg-gray-100 px-2 py-1 rounded">Free</span>
+                </div>
+
+                {/* BUTTON */}
+                <div className="mt-5 block bg-green-500 text-balck py-2 rounded-lg  hover:bg-blue-700 transition font-bold">
+                  Use Tool →
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* INTERNAL LINKS */}
+        <div className="text-center mt-10 text-sm text-gray-500">
+          Popular:
+          <Link href="/tools/salary-calculator" className="text-blue-600 ml-2">
+            Salary Calculator
+          </Link>
+          ,
+          <Link href="/tools/loan-calculator" className="text-blue-600 ml-2">
+            Loan Calculator
+          </Link>
         </div>
       </section>
 
       {/* 🔍 SEARCH */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* 🔍 TITLE */}
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-3">
-            Search Finance Tools 🔍
-          </h2>
+      <section className="py-12 px-4 text-center">
+        <h2 className="text-xl font-bold mb-4">Find Your Tool 🔍</h2>
 
-          {/* 🔥 SUBTEXT */}
-          <p className="text-sm sm:text-base text-gray-500 mb-6 max-w-xl mx-auto">
-            Quickly find calculators like salary, loan, investment and more.
-          </p>
-
-          {/* 🔍 SEARCH COMPONENT */}
-          <div className="bg-white p-4 sm:p-6 rounded-2xl shadow-md border">
-            <SearchTools />
-          </div>
+        <div className="max-w-3xl mx-auto bg-white p-6 rounded-xl shadow border">
+          <SearchTools />
         </div>
       </section>
 
-      {/* 🔥 FEATURES */}
-      <section className="bg-gray-50 py-14 text-center">
-        <h2 className="text-xl sm:text-2xl font-bold mb-8">
-          Why ToolioFinance?
-        </h2>
+      {/* 🔥 TRUST */}
+      <section className="bg-emerald-100 py-12 text-center">
+        <h2 className="text-xl font-bold mb-6">Why Choose ToolioFinance?</h2>
 
-        <div className="grid gap-5 md:grid-cols-3 max-w-6xl mx-auto px-4">
-          <div className="p-5 bg-white rounded-xl shadow">
-            ⚡ Instant Results
+        <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto px-4">
+          <div className="bg-white p-4 rounded-lg shadow">
+            ✔ 100% Free Tools
           </div>
-          <div className="p-5 bg-white rounded-xl shadow">
-            🔒 Secure & Private
+          <div className="bg-white p-4 rounded-lg shadow">
+            ✔ Accurate Results
           </div>
-          <div className="p-5 bg-white rounded-xl shadow">💰 High Accuracy</div>
+          <div className="bg-white p-4 rounded-lg shadow">✔ No Data Stored</div>
         </div>
       </section>
 
       {/* 🔥 BLOG */}
       <section className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-xl sm:text-2xl font-bold text-center mb-4">
-          Latest Finance Articles
-        </h2>
+        <h2 className="text-2xl font-bold text-center mb-6">Latest Articles</h2>
 
         <BlogPreview />
 
         <div className="text-center mt-6">
           <Link
             href="/blog"
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg"
+            className="px-6 py-3 bg-green-400 text-black font-bold rounded-lg"
           >
             View All →
+          </Link>
+        </div>
+        <div className="text-center mt-6 text-sm text-gray-500">
+          Learn more:
+          <Link href="/tools/salary-calculator" className="text-blue-600 ml-2">
+            Salary After Tax Guide
+          </Link>
+          ,
+          <Link href="/tools/investment" className="text-blue-600 ml-2">
+            Investment Strategy
+          </Link>
+          ,
+          <Link
+            href="/tools/retirement-calculator"
+            className="text-blue-600 ml-2"
+          >
+            Save Money Tips
           </Link>
         </div>
       </section>
 
       {/* 🔥 CTA */}
-      <section className="bg-blue-700 text-white text-center py-16 px-4">
-        <h2 className="text-2xl sm:text-3xl font-bold">
-          Take Control of Your Financial Future 🚀
-        </h2>
+      <section className="bg-emerald-300 text-white text-center py-16">
+        <h2 className="text-3xl font-bold">Take Control of Your Money 🚀</h2>
 
         <p className="mt-3 text-white/90">
-          Start using powerful USA finance tools today.
+          Start using powerful finance tools today.
         </p>
 
         <Link
           href="/tools/investment-calculator"
-          className="inline-block mt-6 px-6 py-3 bg-white text-blue-700 rounded-xl font-semibold"
+          className="inline-block mt-6 px-6 py-3 bg-green-400 text-black rounded-xl font-semibold"
         >
-          Try Now
+          Start Now
         </Link>
       </section>
 
       {/* 🔥 FAQ */}
+
+      <section className="max-w-4xl mx-auto px-4 py-6 text-sm text-gray-500">
+        <p>
+          Our platform offers the best salary calculator USA, loan EMI
+          calculator, mortgage calculator, investment calculator, and retirement
+          planner tools. All tools are optimized for accurate financial planning
+          in the United States.
+        </p>
+      </section>
+      {/* 🔥 FAQ SEO + UI */}
       <section className="max-w-4xl mx-auto px-4 py-16">
-        <h2 className="text-xl sm:text-2xl font-bold text-center mb-6">FAQ</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-center mb-6">
+          Frequently Asked Questions
+        </h2>
 
         <div className="space-y-4">
           <details className="bg-gray-100 p-4 rounded-lg">
             <summary className="font-semibold cursor-pointer">
               Are these tools free?
             </summary>
-            <p className="mt-2 text-sm">Yes, all tools are 100% free.</p>
+            <p className="mt-2 text-sm">
+              Yes, all financial calculators on ToolioFinance are completely
+              free to use.
+            </p>
           </details>
 
           <details className="bg-gray-100 p-4 rounded-lg">
             <summary className="font-semibold cursor-pointer">
               Are results accurate?
             </summary>
-            <p className="mt-2 text-sm">Based on USA financial data.</p>
+            <p className="mt-2 text-sm">
+              Our tools use updated USA financial data to provide accurate
+              results.
+            </p>
           </details>
 
           <details className="bg-gray-100 p-4 rounded-lg">
             <summary className="font-semibold cursor-pointer">
-              Do you store data?
+              Do you store user data?
             </summary>
-            <p className="mt-2 text-sm">No, everything is private.</p>
+            <p className="mt-2 text-sm">
+              No, we do not store any personal or financial data.
+            </p>
           </details>
         </div>
+
+        {/* ✅ SEO FAQ SCHEMA */}
+        {/* ✅ WEBSITE + ORGANIZATION SCHEMA */}
       </section>
+      {/* ✅ WEBSITE + ORGANIZATION SCHEMA */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "ToolioFinance",
+            url: "https://www.tooliofinance.com",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: "https://www.tooliofinance.com/tools/{search_term}",
+              "query-input": "required name=search_term",
+            },
+          }),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "ToolioFinance",
+            url: "https://www.tooliofinance.com",
+            logo: "https://www.tooliofinance.com/logo.png",
+          }),
+        }}
+      />
     </div>
   );
 }

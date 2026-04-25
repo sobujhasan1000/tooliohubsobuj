@@ -34,6 +34,18 @@ export default async function sitemap() {
       priority: 0.8,
       changeFrequency: "daily",
     },
+    {
+      url: `${baseUrl}/disclaimer`,
+      lastModified: new Date(),
+      priority: 0.8,
+      changeFrequency: "daily",
+    },
+    {
+      url: `${baseUrl}/privacy-policy`,
+      lastModified: new Date(),
+      priority: 0.8,
+      changeFrequency: "daily",
+    },
   ];
 
   // ✅ TOOLS (MONEY PAGES 💰)

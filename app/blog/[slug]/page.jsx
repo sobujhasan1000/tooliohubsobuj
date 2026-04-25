@@ -11,11 +11,14 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 import Link from "next/link";
 
-// ✅ SEO META (ADVANCED)
+/* =========================
+   🔥 SEO METADATA FIXED
+========================= */
 export async function generateMetadata({ params }) {
   await connectDB();
 
-  const { slug } = await params;
+  const { slug } = await params; // ✅ FIX
+
   const blog = await Blog.findOne({ slug });
 
   if (!blog) {
@@ -25,20 +28,23 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  const cleanText = blog.content
+    .replace(/[#_*`]/g, "")
+    .replace(/\n/g, " ")
+    .slice(0, 160);
+
   const url = `https://www.tooliofinance.com/blog/${blog.slug}`;
-  const description = blog.metaDescription || blog.content.slice(0, 160);
 
   return {
-    title: blog.title,
-    description,
+    title: `${blog.title} | ToolioFinance`,
+    description: blog.metaDescription || cleanText,
 
     keywords: [
-      "finance tools",
-      "loan calculator",
-      "salary calculator",
-      "mortgage calculator",
-      "investment planning",
-      "personal finance 2026",
+      blog.title,
+      "personal finance USA",
+      "money management",
+      "loan guide",
+      "investment tips",
     ],
 
     alternates: {
@@ -47,17 +53,16 @@ export async function generateMetadata({ params }) {
 
     openGraph: {
       title: blog.title,
-      description,
+      description: blog.metaDescription || cleanText,
       url,
       siteName: "ToolioFinance",
       type: "article",
-      locale: "en_US",
     },
 
     twitter: {
       card: "summary_large_image",
       title: blog.title,
-      description,
+      description: blog.metaDescription || cleanText,
     },
 
     robots: {
@@ -67,17 +72,21 @@ export async function generateMetadata({ params }) {
   };
 }
 
-// ✅ EXTRACT HEADINGS (TOC)
+/* =========================
+   📑 HEADING EXTRACTOR
+========================= */
 function extractHeadings(content) {
   const regex = /^(##|###)\s+(.*)/gm;
   const headings = [];
   let match;
 
   while ((match = regex.exec(content)) !== null) {
+    const text = match[2];
+
     headings.push({
-      text: match[2],
+      text,
       level: match[1],
-      id: match[2]
+      id: text
         .toLowerCase()
         .replace(/[^\w\s]/g, "")
         .replace(/\s+/g, "-"),
@@ -87,11 +96,14 @@ function extractHeadings(content) {
   return headings;
 }
 
-// ✅ MAIN PAGE
+/* =========================
+   🚀 MAIN PAGE FIXED
+========================= */
 export default async function BlogSingle({ params }) {
   await connectDB();
 
-  const { slug } = await params;
+  const { slug } = await params; // ✅ FIX (IMPORTANT)
+
   const blog = await Blog.findOne({ slug });
 
   if (!blog) return notFound();
@@ -103,13 +115,13 @@ export default async function BlogSingle({ params }) {
       <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-6">
         {/* MAIN CONTENT */}
         <div className="md:col-span-3 bg-white p-6 rounded-xl shadow">
-          {/* ✅ JSON-LD STRUCTURED DATA */}
+          {/* ✅ STRUCTURED DATA */}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
               __html: JSON.stringify({
                 "@context": "https://schema.org",
-                "@type": "Article",
+                "@type": "BlogPosting",
                 headline: blog.title,
                 description: blog.content.slice(0, 160),
                 author: {
@@ -138,7 +150,14 @@ export default async function BlogSingle({ params }) {
             📅 {new Date(blog.createdAt).toDateString()}
           </p>
 
-          {/* MARKDOWN CONTENT */}
+          {/* INTRO (SEO BOOST) */}
+          <p className="text-gray-600 mb-6 text-lg">
+            This guide explains everything about <strong>{blog.title}</strong>.
+            Learn how to manage money, reduce expenses, and improve your
+            financial strategy.
+          </p>
+
+          {/* CONTENT */}
           <article className="prose max-w-none">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
@@ -177,7 +196,7 @@ export default async function BlogSingle({ params }) {
             </ReactMarkdown>
           </article>
 
-          {/* RELATED TOOLS */}
+          {/* 🔥 RELATED TOOLS */}
           <div className="mt-10 bg-blue-50 p-5 rounded-xl">
             <h3 className="font-bold mb-3">🔥 Related Tools</h3>
 
@@ -193,7 +212,7 @@ export default async function BlogSingle({ params }) {
           </div>
         </div>
 
-        {/* SIDEBAR TOC */}
+        {/* SIDEBAR */}
         <div className="hidden md:block bg-white p-4 rounded-xl shadow h-fit sticky top-10">
           <h3 className="font-semibold mb-3">📑 Contents</h3>
 

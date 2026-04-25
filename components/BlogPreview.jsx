@@ -44,7 +44,7 @@ export default function BlogPreview() {
         Latest Finance Blogs 🚀
       </h2>
 
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 text-black">
         {blogs.map((blog) => (
           <Link key={blog._id} href={`/blog/${blog.slug}`}>
             <div className="group bg-white border rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 cursor-pointer">
@@ -64,12 +64,12 @@ export default function BlogPreview() {
               </div> */}
 
               {/* CONTENT */}
-              <div className="p-5">
+              <div className="p-5 bg-green-100">
                 <h3 className="text-base sm:text-lg font-semibold mb-2 line-clamp-2 group-hover:text-blue-600 transition">
                   {blog.title}
                 </h3>
 
-                <p className="text-sm text-gray-500 line-clamp-3">
+                <p className="text-sm text-black line-clamp-3">
                   {blog.content?.slice(0, 110)}...
                 </p>
 
@@ -80,11 +80,11 @@ export default function BlogPreview() {
 
                 {/* CTA */}
                 <div className="mt-4 flex justify-between items-center">
-                  <span className="text-blue-600 text-sm font-medium group-hover:underline">
+                  <span className="text-red-400 text-sm font-medium group-hover:underline">
                     Read More →
                   </span>
 
-                  <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">
+                  <span className="text-xs bg-blue-100 text-red-600 px-2 py-1 rounded">
                     Blog
                   </span>
                 </div>

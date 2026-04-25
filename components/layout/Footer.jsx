@@ -17,16 +17,21 @@ export default function Footer() {
             <Link href="/about">About</Link>
             <Link href="/contact">Contact</Link>
             <Link href="/privacy-policy">Privacy Policy</Link>
-            <Link href="/terms">Terms</Link>
+            <Link href="/disclaimer">disclaimer </Link>
           </div>
         </div>
 
         <div>
           <h3 className="text-white font-semibold mb-3">Popular Tools</h3>
           <div className="flex flex-col gap-2">
-            <Link href="/tools/image-compressor">Image Compressor</Link>
-            <Link href="/tools/json-formatter">JSON Formatter</Link>
-            <Link href="/tools/password-generator">Password Generator</Link>
+            <Link href="/tools/loan-calculator">Loan Calculator</Link>
+            <Link href="/tools/salary-calculator">Salary Calculator</Link>
+            <Link href="/tools/mortgage-calculator">Mortgage Calculator</Link>
+            <Link href="/tools/retirement-calculator">
+              Retirement Calculator
+            </Link>
+            <Link href="/tools/interest-calculator">Interest Calculator</Link>
+            <Link href="/tools/credit-card">Credit Card Calculator</Link>
           </div>
         </div>
       </div>
