@@ -2,6 +2,7 @@ import InvestmentDashboard from "./InvestmentClient";
 import InvestmentSeo from "./InvestmentSeo";
 import { getRelatedBlogs } from "@/lib/getRelatedBlogs";
 import Link from "next/link";
+import CtaButton from "@/components/CtaButton";
 
 export const metadata = {
   title: "Investment Calculator USA (2026) – ROI, Profit & Growth Tool",
@@ -22,6 +23,7 @@ export default async function Page() {
     <>
       <InvestmentDashboard />
       <InvestmentSeo />
+      <CtaButton />
 
       {/* 🔥 AUTO BLOG SECTION */}
       <div className="max-w-6xl mx-auto mt-12 px-4 ">

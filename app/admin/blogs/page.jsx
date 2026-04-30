@@ -2,101 +2,142 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Pencil, Trash2, Search } from "lucide-react";
 
 export default function AdminBlogs() {
   const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const router = useRouter();
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [search, setSearch] = useState("");
 
-  // 📥 Fetch all blogs
-  const fetchBlogs = async () => {
-    try {
-      const res = await fetch("/api/blogs");
-      const data = await res.json();
-      setBlogs(data);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
+  const router = useRouter();
+  const limit = 50;
+
+  const fetchBlogs = async (currentPage = 1) => {
+    const res = await fetch(`/api/blogs?page=${currentPage}&limit=${limit}`);
+    const data = await res.json();
+
+    setBlogs(data.blogs);
+    setTotalPages(data.totalPages);
+    setPage(currentPage);
   };
 
   useEffect(() => {
-    fetchBlogs();
+    fetchBlogs(1);
   }, []);
 
-  // 🗑 DELETE BLOG
   const handleDelete = async (id) => {
-    const confirmDelete = confirm("Delete this blog?");
-    if (!confirmDelete) return;
-
-    await fetch(`/api/blogs/${id}`, {
-      method: "DELETE",
-    });
-
-    // 🔄 refresh list
-    setBlogs((prev) => prev.filter((b) => b._id !== id));
+    if (!confirm("Delete this blog?")) return;
+    await fetch(`/api/blogs/${id}`, { method: "DELETE" });
+    fetchBlogs(page);
   };
 
-  // ✏️ EDIT BLOG
   const handleEdit = (id) => {
     router.push(`/admin/blogs/edit/${id}`);
   };
 
-  if (loading) {
-    return <p className="text-center p-10">Loading...</p>;
-  }
+  const filteredBlogs = blogs.filter((b) =>
+    b.title.toLowerCase().includes(search.toLowerCase()),
+  );
 
   return (
-    <div className="p-6 max-w-6xl mx-auto">
-      
-      <h1 className="text-2xl font-bold mb-6">Admin Blogs</h1>
+    <div className="p-6 max-w-7xl mx-auto space-y-6">
+      {/* HEADER */}
+      <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+        <h1 className="text-3xl font-bold">📊 Admin Blogs</h1>
 
-      <div className="overflow-x-auto">
-        <table className="w-full border rounded-lg overflow-hidden">
-          
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="p-3 text-left">Title</th>
-              <th className="p-3 text-left">Date</th>
-              <th className="p-3 text-center">Actions</th>
-            </tr>
-          </thead>
+        <div className="flex items-center gap-2 w-full md:w-80">
+          <Search className="w-4 h-4 text-gray-500" />
+          <Input
+            placeholder="Search blog..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+      </div>
 
-          <tbody>
-            {blogs.map((blog) => (
-              <tr key={blog._id} className="border-t">
-                
-                <td className="p-3">{blog.title}</td>
-
-                <td className="p-3 text-sm text-gray-500">
-                  {new Date(blog.createdAt).toDateString()}
-                </td>
-
-                <td className="p-3 flex gap-2 justify-center">
-                  
-                  {/* EDIT */}
-                  <button
-                    onClick={() => handleEdit(blog._id)}
-                    className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
-                  >
-                    Edit
-                  </button>
-
-                  {/* DELETE */}
-                  <button
-                    onClick={() => handleDelete(blog._id)}
-                    className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"
-                  >
-                    Delete
-                  </button>
-
-                </td>
+      {/* TABLE CARD */}
+      <Card className="shadow-xl rounded-2xl">
+        <CardContent className="p-0 overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-100 text-gray-600">
+              <tr>
+                <th className="p-4 text-left">#</th>
+                <th className="p-4 text-left">Title</th>
+                <th className="p-4 text-left">Date</th>
+                <th className="p-4 text-center">Actions</th>
               </tr>
-            ))}
-          </tbody>
+            </thead>
 
-        </table>
+            <tbody>
+              {filteredBlogs.map((blog, index) => (
+                <tr
+                  key={blog._id}
+                  className="border-t hover:bg-gray-50 transition"
+                >
+                  <td className="p-4 font-medium">
+                    {(page - 1) * limit + index + 1}
+                  </td>
+
+                  <td className="p-4 font-semibold text-gray-800">
+                    {blog.title}
+                  </td>
+
+                  <td className="p-4 text-gray-500">
+                    {new Date(blog.createdAt).toDateString()}
+                  </td>
+
+                  <td className="p-4 flex justify-center gap-2">
+                    <Button
+                      size="sm"
+                      className="flex gap-1 items-center"
+                      onClick={() => handleEdit(blog._id)}
+                    >
+                      <Pencil size={14} /> Edit
+                    </Button>
+
+                    <Button
+                      size="sm"
+                      variant="destructive"
+                      className="flex gap-1 items-center"
+                      onClick={() => handleDelete(blog._id)}
+                    >
+                      <Trash2 size={14} /> Delete
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </CardContent>
+      </Card>
+
+      {/* PAGINATION */}
+      <div className="flex justify-between items-center">
+        <p className="text-sm text-gray-500">
+          Page {page} of {totalPages}
+        </p>
+
+        <div className="flex gap-2">
+          <Button
+            disabled={page === 1}
+            onClick={() => fetchBlogs(page - 1)}
+            variant="outline"
+          >
+            Prev
+          </Button>
+
+          <Button
+            disabled={page === totalPages}
+            onClick={() => fetchBlogs(page + 1)}
+            variant="outline"
+          >
+            Next
+          </Button>
+        </div>
       </div>
     </div>
   );

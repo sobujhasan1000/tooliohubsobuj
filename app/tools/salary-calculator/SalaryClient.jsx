@@ -1,5 +1,5 @@
 "use client";
-
+import CtaButton from "@/components/CtaButton";
 import { useMemo, useState } from "react";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 
@@ -149,7 +149,7 @@ export default function SalaryCalculatorUSA() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 px-4 py-10">
+    <div className=" bg-linear-to-br from-blue-50 to-gray-100 px-4 py-10">
       <div className="max-w-6xl mx-auto">
         {/* TITLE */}
         <h1 className="text-4xl font-bold text-center mb-4">
@@ -246,6 +246,9 @@ export default function SalaryCalculatorUSA() {
         </div>
 
         {/* SEO CONTENT */}
+        <p className="text-center text-sm text-red-600 mt-4 ">
+          Free • Takes 30 seconds • USA users only
+        </p>
       </div>
     </div>
   );

@@ -67,7 +67,7 @@ export default function RetirementCalculator() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-0-to-br from-slate-100 to-white px-4 py-8">
+    <div className=" bg-linear-0-to-br from-slate-100 to-white px-4 py-4">
       {/* SEO TOP TEXT */}
       <p className="text-gray-400 text-center mb-2">
         Retirement Calculator USA – Future Wealth Planner 2026

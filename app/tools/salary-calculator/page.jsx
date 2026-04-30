@@ -1,15 +1,3 @@
-// import SalaryClient from "./SalaryClient";
-
-// export const metadata = {
-//   title: "Salary After Tax Calculator USA (2026) – Take Home Pay Estimator",
-//   description:
-//     "Use our free USA salary calculator to estimate your take-home pay after federal, state taxes, Social Security, and Medicare.",
-// };
-
-// export default function Page() {
-//   return <SalaryClient />;
-// }
-
 import SalaryClient from "./SalaryClient";
 import { getRelatedBlogs } from "@/lib/getRelatedBlogs";
 import SalarySEO from "./salarySeo";

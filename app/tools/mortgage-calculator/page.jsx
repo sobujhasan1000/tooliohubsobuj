@@ -2,6 +2,7 @@ import MortgageCalculatorPage from "./MortgageClient";
 import MortgageSeo from "./MortgageSEO";
 import { getRelatedBlogs } from "@/lib/getRelatedBlogs";
 import Link from "next/link";
+import CtaButton from "@/components/CtaButton";
 
 export const metadata = {
   title: "Mortgage Calculator USA (2026) – Home Loan & Monthly Payment Tool",
@@ -22,6 +23,7 @@ export default async function Page() {
     <>
       <MortgageCalculatorPage />
       <MortgageSeo />
+      <CtaButton />
 
       {/* 🔥 AUTO BLOG SECTION */}
       <div className="max-w-6xl mx-auto mt-12 px-4">

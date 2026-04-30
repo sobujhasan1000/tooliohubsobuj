@@ -2,6 +2,7 @@ import CreditCardInterestCalculator from "./CreditCardInterestCalculator";
 import CreditCardSeo from "./CreditCardSEO";
 import { getRelatedBlogs } from "@/lib/getRelatedBlogs";
 import Link from "next/link";
+import CtaButton from "@/components/CtaButton";
 
 export const metadata = {
   title: "Credit Card Interest Calculator USA (2026) – Payoff & APR Tool",
@@ -22,6 +23,7 @@ export default async function Page() {
     <>
       <CreditCardInterestCalculator />
       <CreditCardSeo />
+      <CtaButton />
 
       {/* 🔥 AUTO BLOG SECTION */}
       <div className="max-w-6xl mx-auto mt-12 px-4">

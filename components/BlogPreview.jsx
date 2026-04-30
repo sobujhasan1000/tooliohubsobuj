@@ -13,7 +13,7 @@ export default function BlogPreview() {
       try {
         const res = await fetch("/api/blogs?limit=6");
         const data = await res.json();
-        setBlogs(data);
+        setBlogs(data.blogs);
       } catch (error) {
         console.log(error);
       } finally {

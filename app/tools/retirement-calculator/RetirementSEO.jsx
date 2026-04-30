@@ -1,8 +1,8 @@
 export default function RetirementSEO() {
   return (
-    <section className="mt-16 max-w-5xl mx-auto px-4 space-y-10">
+    <section className="mt-16 max-w-5xl mx-auto px-4 space-y-4">
       {/* HERO */}
-      <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white p-8 rounded-2xl shadow-lg">
+      <div className="bg-linear-to-r from-emerald-600 to-teal-600 text-white p-8 rounded-2xl shadow-lg">
         <h1 className="text-2xl md:text-4xl font-bold">
           Retirement Calculator USA 2026 (Plan Your Future Income)
         </h1>

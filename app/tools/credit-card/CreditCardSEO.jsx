@@ -2,7 +2,7 @@ export default function CreditCardSEO() {
   return (
     <section className="mt-8 max-w-5xl mx-auto px-4 space-y-6">
       {/* HERO */}
-      <div className="bg-gradient-to-r from-rose-600 to-red-600 text-white p-8 rounded-2xl shadow-lg">
+      <div className="bg-linear-to-r from-rose-600 to-red-600 text-white p-8 rounded-2xl shadow-lg">
         <h1 className="text-2xl md:text-4xl font-bold">
           Credit Card Calculator USA 2026 (Interest & Payment Guide)
         </h1>

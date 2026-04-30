@@ -2,6 +2,7 @@ import RetirementCalculator from "./RetirementCalculator";
 import RetirementSeo from "./RetirementSEO";
 import { getRelatedBlogs } from "@/lib/getRelatedBlogs";
 import Link from "next/link";
+import CtaButton from "@/components/CtaButton";
 
 export const metadata = {
   title: "Retirement Calculator USA (2026) – Plan Your Future Wealth",

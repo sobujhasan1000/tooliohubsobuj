@@ -38,7 +38,7 @@ export default function InvestmentDashboard() {
   }, [principal, monthly, rate, years, inflation, tax]);
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-gray-50 to-green-50 p-4 md:p-8">
+    <div className=" bg-linear-to-br from-gray-50 to-green-50 p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
         {/* HEADER */}
         <div className="mb-6 text-center">
